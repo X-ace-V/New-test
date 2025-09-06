@@ -1,36 +1,47 @@
 # Contribution Guide
 
-This is just a test and nothing else.
+It is just a test.
 
-## Palindrome Checker (C++)
+## Palindrome Code Examples
 
-```cpp
-#include <iostream>
-#include <string>
-#include <algorithm>
+### Java
 
-bool isPalindrome(const std::string& str) {
-    std::string reversed_str = str;
-    std::reverse(reversed_str.begin(), reversed_str.end());
-    return str == reversed_str;
-}
-
-int main() {
-    std::string test_str1 = "madam";
-    std::string test_str2 = "hello";
-
-    if (isPalindrome(test_str1)) {
-        std::cout << "'" << test_str1 << "' is a palindrome." << std::endl;
-    } else {
-        std::cout << "'" << test_str1 << "' is not a palindrome." << std::endl;
+```java
+class Palindrome {
+    public static boolean isPalindrome(String str) {
+        String cleanStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int left = 0;
+        int right = cleanStr.length() - 1;
+        while (left < right) {
+            if (cleanStr.charAt(left) != cleanStr.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 
-    if (isPalindrome(test_str2)) {
-        std::cout << "'" << test_str2 << "' is a palindrome." << std::endl;
-    } else {
-        std::cout << "'" << test_str2 << "' is not a palindrome." << std::endl;
+    public static void main(String[] args) {
+        String test1 = "madam";
+        String test2 = "A man, a plan, a canal: Panama";
+        String test3 = "hello";
+        System.out.println("''" + test1 + "'' is palindrome: " + isPalindrome(test1));
+        System.out.println("''" + test2 + "'' is palindrome: " + isPalindrome(test2));
+        System.out.println("''" + test3 + "'' is palindrome: " + isPalindrome(test3));
     }
-
-    return 0;
 }
+```
+
+### Python
+
+```python
+def is_palindrome(text):
+    clean_text = "".join(filter(str.isalnum, text)).lower()
+    return clean_text == clean_text[::-1]
+
+if __name__ == "__main__":
+    print(f"'madam' is palindrome: {is_palindrome('madam')}")
+    print(f"'A man, a plan, a canal: Panama' is palindrome: {is_palindrome('A man, a plan, a canal: Panama')}")
+    print(f"'hello' is palindrome: {is_palindrome('hello')}")
 ```
