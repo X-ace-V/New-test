@@ -1,49 +1,44 @@
-# Contribution Guide
+# Contributions
 
-it is just a test
+It is just a test.
 
 ## Palindrome Code Examples
 
-### Java Palindrome Checker
+### Java
 
 ```java
-// Java Palindrome Checker
-public class PalindromeChecker {
+public class Palindrome {
     public static boolean isPalindrome(String str) {
-        // Remove non-alphanumeric characters and convert to lowercase
-        String cleanedStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        // Reverse the string and compare
-        String reversedStr = new StringBuilder(cleanedStr).reverse().toString();
-        return cleanedStr.equals(reversedStr);
+        String cleanStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int left = 0;
+        int right = cleanStr.length() - 1;
+        while (left < right) {
+            if (cleanStr.charAt(left) != cleanStr.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
-        String test1 = "madam";
-        String test2 = "A man, a plan, a canal: Panama";
-        String test3 = "hello";
-
-        System.out.println("'" + test1 + "' is palindrome: " + isPalindrome(test1));
-        System.out.println("'" + test2 + "' is palindrome: " + isPalindrome(test2));
-        System.out.println("'" + test3 + "' is palindrome: " + isPalindrome(test3));
+        System.out.println("madam is palindrome: " + isPalindrome("madam"));
+        System.out.println("A man, a plan, a canal: Panama is palindrome: " + isPalindrome("A man, a plan, a canal: Panama"));
+        System.out.println("hello is palindrome: " + isPalindrome("hello"));
     }
 }
 ```
 
-### PHP Palindrome Checker
+### Ruby
 
-```php
-<?php
-// PHP Palindrome Checker
-function isPalindrome(string $str): bool {
-    // Remove non-alphanumeric characters and convert to lowercase
-    $cleanedStr = preg_replace("/[^a-zA-Z0-9]/", "", strtolower($str));
-    // Compare the cleaned string with its reverse
-    return $cleanedStr === strrev($cleanedStr);
-}
+```ruby
+def palindrome?(str)
+  cleaned_str = str.gsub(/[^a-zA-Z0-9]/, '').downcase
+  cleaned_str == cleaned_str.reverse
+end
 
-// Test cases
-echo "'" . "madam" . "' is palindrome: " . (isPalindrome("madam") ? "true" : "false") . "\n";
-echo "'" . "A man, a plan, a canal: Panama" . "' is palindrome: " . (isPalindrome("A man, a plan, a canal: Panama") ? "true" : "false") . "\n";
-echo "'" . "hello" . "' is palindrome: " . (isPalindrome("hello") ? "true" : "false") . "\n";
-?>
+puts "madam is palindrome: #{palindrome?('madam')}"
+puts "A man, a plan, a canal: Panama is palindrome: #{palindrome?('A man, a plan, a canal: Panama')}"
+puts "hello is palindrome: #{palindrome?('hello')}"
 ```
