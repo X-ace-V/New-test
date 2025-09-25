@@ -24,3 +24,4 @@ How to verify in the app:
 - The top header bar remains a consistent height and the File Viewer actions (Expand/Preview toggle) appear in the header next to the title.
 
 Tip: search the code for `highlight-start` to jump to the changes.
+\n\n## Repository Summary\n\nThis repository serves as a testing ground for SWE Agent tasks.
